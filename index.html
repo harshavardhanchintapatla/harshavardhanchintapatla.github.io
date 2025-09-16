@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Harshavardhan Chintapatla • Portfolio</title>
+  <meta name="description" content="Projects, research, skills, and experience of Harshavardhan Chintapatla." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#top">HC</a>
+      <button id="themeToggle" class="ghost-btn" aria-label="Toggle theme">🌓</button>
+      <div class="nav-links">
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#education">Education</a>
+        <a href="#awards">Awards</a>
+        <a href="#contact" class="btn">Contact</a>
+      </div>
+    </nav>
+    <section class="hero" id="top" role="banner">
+      <div class="hero-left">
+        <h1 id="name">Harshavardhan Chintapatla</h1>
+        <p id="tagline" class="tagline"></p>
+        <div class="ctas">
+          <a id="downloadCV" class="btn" href="#" target="_blank" rel="noopener">Download CV</a>
+          <a class="ghost-btn" href="#projects">View Projects ↓</a>
+        </div>
+        <div class="meta">
+          <a id="githubLink" href="#" target="_blank" rel="noopener">GitHub</a> •
+          <a id="emailLink" href="#" target="_blank" rel="noopener">Email</a> •
+          <span id="location"></span>
+        </div>
+      </div>
+      <div class="hero-right">
+        <div class="stat">
+          <span id="metric-1" class="num"></span>
+          <small>Cloud-AI Testbed<br/>Latency / Accuracy</small>
+        </div>
+        <div class="stat">
+          <span id="metric-2" class="num"></span>
+          <small>Automation Coverage<br/>Across Regions</small>
+        </div>
+        <div class="stat">
+          <span id="metric-3" class="num"></span>
+          <small>Tooling & Stack</small>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  <main>
+    <section id="projects" class="section">
+      <div class="section-head">
+        <h2>Projects</h2>
+        <input id="projectSearch" class="search" type="search" placeholder="Search by tech, title, keywords…" aria-label="Search projects" />
+        <div id="tagBar" class="tags" role="list"></div>
+      </div>
+      <div id="projectGrid" class="grid"></div>
+    </section>
+
+    <section id="experience" class="section">
+      <h2>Experience</h2>
+      <div id="expTimeline" class="timeline"></div>
+    </section>
+
+    <section id="skills" class="section">
+      <h2>Skills</h2>
+      <div id="skillsWrap" class="skills"></div>
+    </section>
+
+    <section id="education" class="section">
+      <h2>Education</h2>
+      <div id="eduList" class="cards"></div>
+    </section>
+
+    <section id="awards" class="section">
+      <h2>Awards</h2>
+      <ul id="awardsList" class="bullets"></ul>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="contact">
+        <a id="emailCTA" class="btn" href="#">Email Me</a>
+        <a id="githubCTA" class="ghost-btn" href="#" target="_blank" rel="noopener">GitHub Profile</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Last updated <span id="lastUpdated"></span> • © <span id="year"></span> Harshavardhan Chintapatla</small>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
