@@ -7,98 +7,480 @@
   <meta name="description" content="Projects, research, skills, and experience of Harshavardhan Chintapatla." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-  <link rel="icon" href="favicon.ico" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ========= THEME ========= */
+    :root{
+      --bg:#0a0f14; --panel:#0e1520; --muted:#93a4b8; --text:#e8eef4;
+      --brand:#67e8f9; --brand-2:#22d3ee; --accent:#6ee7b7;
+      --card:#0d1626; --ring:#22d3ee; --shadow: rgba(2,8,23,.55);
+      --glass: rgba(255,255,255,.06); --glass-brd: rgba(255,255,255,.12);
+    }
+    :root[data-theme="light"]{
+      --bg:#f7fafc; --panel:#ffffff; --muted:#475569; --text:#0f172a;
+      --brand:#0ea5e9; --brand-2:#06b6d4; --accent:#10b981;
+      --card:#ffffff; --ring:#0ea5e9; --shadow: rgba(2,8,23,.12);
+      --glass: rgba(0,0,0,.05); --glass-brd: rgba(0,0,0,.08);
+    }
+
+    /* ========= RESET ========= */
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text)}
+    a{color:var(--brand-2);text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* ========= GLOBAL UI ========= */
+    .container{max-width:1200px;margin:0 auto;padding:0 1.2rem}
+    .btn,.ghost{display:inline-block;padding:.75rem 1rem;border-radius:14px;font-weight:700;border:1px solid transparent;transition:.18s transform, .18s filter}
+    .btn{background:linear-gradient(135deg,var(--brand),var(--accent));color:#04131c;box-shadow:0 10px 30px -10px var(--shadow)}
+    .btn:hover{transform:translateY(-1px);text-decoration:none}
+    .ghost{border-color:var(--glass-brd);background:transparent;color:var(--text)}
+    .ghost:hover{transform:translateY(-1px);border-color:var(--ring)}
+    .surface{background:var(--card);border:1px solid var(--glass-brd);border-radius:18px;box-shadow:0 10px 30px -15px var(--shadow)}
+    .chip{padding:.35rem .7rem;border:1px solid var(--glass-brd);border-radius:999px;background:var(--glass);backdrop-filter: blur(6px);font-size:.85rem}
+    .chips{display:flex;gap:.45rem;flex-wrap:wrap}
+    .title{font-size:clamp(1.6rem,2.3vw,2.2rem);margin:0 0 .6rem}
+    .muted{color:var(--muted)}
+    .section{padding:3.2rem 0}
+    .reveal{opacity:0;transform:translateY(12px);transition:.5s ease}
+
+    /* ========= NAV / HEADER ========= */
+    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter: saturate(180%) blur(8px);background:linear-gradient(to bottom,rgba(10,15,20,.7),rgba(10,15,20,0))}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand{font-weight:800;border:2px solid var(--ring);padding:.25rem .6rem;border-radius:12px;letter-spacing:.5px}
+    .links{display:flex;gap:1rem;align-items:center}
+    .links a{font-weight:600}
+
+    /* ========= HERO ========= */
+    .hero{position:relative;overflow:hidden}
+    .blob, .blob2{
+      position:absolute;z-index:-1;filter:blur(60px);opacity:.45;pointer-events:none;
+      width:520px;height:520px;border-radius:50%;
+      background:radial-gradient(circle at 30% 30%,var(--brand),transparent 60%),
+                 radial-gradient(circle at 70% 60%,var(--accent),transparent 50%);
+      transform:translate(-30%,-20%);
+    }
+    .blob2{
+      right:-220px;top:-120px;left:auto;transform:none;
+      background:radial-gradient(circle at 30% 30%,var(--brand-2),transparent 55%),
+                 radial-gradient(circle at 70% 60%,var(--brand),transparent 50%);
+    }
+    .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:2rem;align-items:center;padding:3.2rem 0}
+    .headline{font-size:clamp(2rem,4.5vw,3.4rem);margin:.2rem 0}
+    .stat-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+    .stat{padding:1rem;border-radius:16px;border:1px solid var(--glass-brd);background:var(--glass);text-align:center}
+    .stat .num{font-weight:800;font-size:1.4rem}
+
+    /* ========= PROJECTS ========= */
+    .head-row{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:1rem}
+    .search{flex:1;min-width:260px;background:var(--panel);border:1px solid var(--glass-brd);color:var(--text);border-radius:12px;padding:.8rem 1rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .card{padding:1.1rem;display:flex;flex-direction:column;gap:.7rem;position:relative;isolation:isolate}
+    .card h3{margin:.2rem 0}
+    .card:hover{transform:translateY(-2px);box-shadow:0 16px 34px -18px var(--shadow)}
+    .card:after{
+      content:"";position:absolute;inset:-1px;border-radius:18px;z-index:-1;
+      background:linear-gradient(135deg,transparent,rgba(255,255,255,.06));
+    }
+    .badges{display:flex;gap:.35rem;flex-wrap:wrap}
+    .badge{font-size:.8rem;border:1px solid var(--glass-brd);background:var(--glass);padding:.2rem .5rem;border-radius:999px}
+
+    /* ========= TIMELINE ========= */
+    .timeline{display:grid;gap:1rem}
+    .timecard{padding:1rem 1rem 1rem 1.2rem;border-left:3px solid var(--accent);background:var(--card);border-radius:12px;border:1px solid var(--glass-brd)}
+    .timecard small{color:var(--muted)}
+
+    /* ========= SKILLS ========= */
+    .skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .skill{padding:1rem;border-radius:12px;border:1px solid var(--glass-brd);background:var(--glass)}
+    .bar{height:10px;background:rgba(148,163,184,.26);border-radius:999px;overflow:hidden;margin-top:.5rem}
+    .bar > span{display:block;height:100%;background:linear-gradient(90deg,var(--brand),var(--brand-2));width:0}
+
+    /* ========= EDUCATION/AWARDS ========= */
+    .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+    .bullet{line-height:1.8}
+
+    /* ========= FOOTER ========= */
+    footer{border-top:1px solid var(--glass-brd);padding:1.2rem 0;text-align:center;color:var(--muted);margin-top:2rem}
+
+    @media (max-width:960px){ .hero-grid{grid-template-columns:1fr} .stat-grid{grid-template-columns:1fr 1fr 1fr} }
+    @media (max-width:640px){ .links .ghost{display:none} .stat-grid{grid-template-columns:1fr 1fr} }
+  </style>
 </head>
 <body>
-  <header class="site-header">
-    <nav class="nav">
-      <a class="brand" href="#top">HC</a>
-      <button id="themeToggle" class="ghost-btn" aria-label="Toggle theme">🌓</button>
-      <div class="nav-links">
-        <a href="#projects">Projects</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#education">Education</a>
-        <a href="#awards">Awards</a>
-        <a href="#contact" class="btn">Contact</a>
-      </div>
-    </nav>
-    <section class="hero" id="top" role="banner">
-      <div class="hero-left">
-        <h1 id="name">Harshavardhan Chintapatla</h1>
-        <p id="tagline" class="tagline"></p>
-        <div class="ctas">
-          <a id="downloadCV" class="btn" href="#" target="_blank" rel="noopener">Download CV</a>
-          <a class="ghost-btn" href="#projects">View Projects ↓</a>
+
+  <!-- NAV -->
+  <div class="nav-wrap">
+    <div class="container">
+      <nav>
+        <a class="brand" href="#top">HC</a>
+        <div class="links">
+          <a href="#projects">Projects</a>
+          <a href="#experience">Experience</a>
+          <a href="#skills">Skills</a>
+          <a href="#education">Education</a>
+          <a href="#awards">Awards</a>
+          <button id="themeToggle" class="ghost" aria-label="Toggle theme">🌓</button>
+          <a id="contactTop" class="btn" href="#contact">Contact</a>
         </div>
-        <div class="meta">
+      </nav>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <div class="blob"></div><div class="blob2"></div>
+    <div class="container hero-grid">
+      <div>
+        <p class="chip">Graduate Research Assistant • Cloud • AI/ML • Test Automation • Secure Systems</p>
+        <h1 class="headline">Harshavardhan Chintapatla</h1>
+        <p class="muted" id="tagline"></p>
+        <div style="display:flex;gap:.7rem;margin:1rem 0 1.4rem">
+          <a id="downloadCV" class="btn" href="#" target="_blank" rel="noopener">Download CV</a>
+          <a class="ghost" href="#projects">View Projects ↓</a>
+        </div>
+        <div class="muted">
           <a id="githubLink" href="#" target="_blank" rel="noopener">GitHub</a> •
           <a id="emailLink" href="#" target="_blank" rel="noopener">Email</a> •
           <span id="location"></span>
         </div>
       </div>
-      <div class="hero-right">
-        <div class="stat">
-          <span id="metric-1" class="num"></span>
-          <small>Cloud-AI Testbed<br/>Latency / Accuracy</small>
-        </div>
-        <div class="stat">
-          <span id="metric-2" class="num"></span>
-          <small>Automation Coverage<br/>Across Regions</small>
-        </div>
-        <div class="stat">
-          <span id="metric-3" class="num"></span>
-          <small>Tooling & Stack</small>
+      <div class="surface" style="padding:1.2rem">
+        <h3 class="title" style="margin-bottom:.8rem">Impact at a glance</h3>
+        <div class="stat-grid">
+          <div class="stat"><span class="num" id="metric-1"></span><small class="muted">Cloud-AI Testbed<br/>Latency / Accuracy</small></div>
+          <div class="stat"><span class="num" id="metric-2"></span><small class="muted">Automation Coverage</small></div>
+          <div class="stat"><span class="num" id="metric-3"></span><small class="muted">Tooling & Stack</small></div>
         </div>
       </div>
-    </section>
+    </div>
   </header>
 
   <main>
-    <section id="projects" class="section">
-      <div class="section-head">
-        <h2>Projects</h2>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section container">
+      <div class="head-row">
+        <h2 class="title">Projects</h2>
         <input id="projectSearch" class="search" type="search" placeholder="Search by tech, title, keywords…" aria-label="Search projects" />
-        <div id="tagBar" class="tags" role="list"></div>
       </div>
+      <div id="tagBar" class="chips" role="list"></div>
       <div id="projectGrid" class="grid"></div>
     </section>
 
-    <section id="experience" class="section">
-      <h2>Experience</h2>
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section container">
+      <h2 class="title">Experience</h2>
       <div id="expTimeline" class="timeline"></div>
     </section>
 
-    <section id="skills" class="section">
-      <h2>Skills</h2>
+    <!-- SKILLS -->
+    <section id="skills" class="section container">
+      <h2 class="title">Skills</h2>
       <div id="skillsWrap" class="skills"></div>
     </section>
 
-    <section id="education" class="section">
-      <h2>Education</h2>
+    <!-- EDUCATION -->
+    <section id="education" class="section container">
+      <h2 class="title">Education</h2>
       <div id="eduList" class="cards"></div>
     </section>
 
-    <section id="awards" class="section">
-      <h2>Awards</h2>
-      <ul id="awardsList" class="bullets"></ul>
+    <!-- AWARDS -->
+    <section id="awards" class="section container">
+      <h2 class="title">Awards</h2>
+      <ul id="awardsList" class="bullet"></ul>
     </section>
 
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <div class="contact">
+    <!-- CONTACT -->
+    <section id="contact" class="section container">
+      <h2 class="title">Contact</h2>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap">
         <a id="emailCTA" class="btn" href="#">Email Me</a>
-        <a id="githubCTA" class="ghost-btn" href="#" target="_blank" rel="noopener">GitHub Profile</a>
+        <a id="githubCTA" class="ghost" href="#" target="_blank" rel="noopener">GitHub Profile</a>
       </div>
     </section>
+
   </main>
 
-  <footer class="site-footer">
+  <footer>
     <small>Last updated <span id="lastUpdated"></span> • © <span id="year"></span> Harshavardhan Chintapatla</small>
   </footer>
 
-  <script src="script.js"></script>
+  <script>
+    /* ======== CONTENT (edit here) ======== */
+    const DATA = {
+      basics: {
+        name: "Harshavardhan Chintapatla",
+        tagline: "M.S. Computer Science @ University of Missouri • Building secure, data-driven systems across Cloud + AI/ML + QA automation.",
+        location: "Columbia, MO",
+        email: "hcm6r@umsystem.edu",
+        github: "https://github.com/harshavardhanchintapatla",
+        resumeUrl: "Harsha_s_Resume.pdf"
+      },
+      metrics: {
+        latencyAccuracy: "≈40ms / 94%",
+        automation: "Multi-region CI/CD",
+        stack: "AWS • Java • Python • JS"
+      },
+      projects: [
+        {
+          title: "Cloud-AI Cyberattack Detection Testbed",
+          period: "2024–Present",
+          summary: "AI-driven testbed using AWS Lambda, SageMaker, and EC2 to detect & mitigate cyberattacks in near-real time.",
+          highlights: [
+            "Latency ≈40ms, Accuracy 94%",
+            "Role-based portal, secure data retrieval, schedulers",
+            "Upgraded legacy static site into dynamic app"
+          ],
+          tech: ["AWS","Lambda","SageMaker","EC2","API Gateway","RDS","S3","IAM","Python","JavaScript"],
+          links: []
+        },
+        {
+          title: "Twitter Data Analysis with PySpark",
+          period: "2024",
+          summary: "Explored engagement drivers, media types, geo features, and mention–hashtag networks with PySpark SQL.",
+          highlights: ["PySpark SQL pipelines","Matplotlib & Plotly visualizations"],
+          tech: ["PySpark","Python","SQL","Matplotlib","Plotly"],
+          links: []
+        },
+        {
+          title: "OrangeHRM – QA Automation & CI",
+          period: "2023",
+          summary: "Manual + automated testing with POM; CI via Jenkins for fast feedback across multiple modules.",
+          highlights: ["Java + Selenium (POM)","Jira test mgmt","Jenkins CI"],
+          tech: ["Java","Selenium","Jenkins","Jira","CI/CD"],
+          links: [{label:"Demo",url:"https://opensource-demo.orangehrmlive.com/"}]
+        }
+      ],
+      experience: [
+        {
+          role: "Graduate Research Assistant",
+          org: "University of Missouri",
+          where: "Columbia, MO",
+          period: "Feb 2024 – Present",
+          bullets: [
+            "Built AWS-based AI testbed (Lambda, SageMaker, EC2) achieving ≈40ms latency & 94% accuracy.",
+            "Developed secure research portal with RBAC and automated data pipelines.",
+            "Transformed static site to dynamic app for faster rendering & interactive data."
+          ]
+        },
+        {
+          role: "Associate Consultant",
+          org: "Capgemini Technology Services",
+          where: "Hyderabad, India",
+          period: "Aug 2021 – Dec 2023",
+          bullets: [
+            "Automated backend/UI tests using Postman, Opentest, and Cypress; covered functional/integration/regression.",
+            "Scaled multi-market scripts across regions to increase coverage & stability.",
+            "Improved pipeline reliability by fixing flaky tests and optimizing stages."
+          ]
+        }
+      ],
+      skills: {
+        "Languages": [
+          {name:"Java",level:90},{name:"Python",level:85},{name:"JavaScript",level:80},{name:"HTML/CSS",level:85},{name:"SQL",level:80}
+        ],
+        "Cloud & ML": [
+          {name:"AWS (Lambda/EC2/API-GW/RDS/S3/IAM/SageMaker)",level:85},
+          {name:"Docker",level:70}
+        ],
+        "QA & Tooling": [
+          {name:"Cypress / Selenium / Postman / Jira",level:85},
+          {name:"CI/CD (Jenkins, GitHub Actions)",level:75}
+        ],
+        "IDEs": [
+          {name:"VS Code / Eclipse / Visual Studio",level:80}
+        ]
+      },
+      education: [
+        {school:"University of Missouri", degree:"M.S. in Computer Science", period:"Jan 2024 – Present", location:"Columbia, Missouri"},
+        {school:"Bharath Institute of Higher Education and Research", degree:"B.Tech in Electronics & Communication Engineering", period:"Jul 2017 – Jun 2021", location:"Chennai, India"}
+      ],
+      awards: [
+        "Xtramile Award – Outstanding performance (Dec 2022)",
+        "IEVOLVE certificate – Kaizen idea productivity improvement (Postman)"
+      ]
+    };
+
+    /* ======== UTIL ======== */
+    const $ = (s)=>document.querySelector(s);
+    const $$ = (s)=>document.querySelectorAll(s);
+
+    function initBasics(){
+      $("#tagline").textContent = DATA.basics.tagline;
+      $("#githubLink").href = DATA.basics.github;
+      $("#githubCTA").href = DATA.basics.github;
+      $("#emailLink").href = `mailto:${DATA.basics.email}`;
+      $("#emailCTA").href = `mailto:${DATA.basics.email}`;
+      $("#downloadCV").href = DATA.basics.resumeUrl;
+      $("#location").textContent = DATA.basics.location;
+      $("#metric-1").textContent = DATA.metrics.latencyAccuracy;
+      $("#metric-2").textContent = DATA.metrics.automation;
+      $("#metric-3").textContent = DATA.metrics.stack;
+      $("#year").textContent = new Date().getFullYear();
+      $("#lastUpdated").textContent = new Date(document.lastModified).toLocaleDateString();
+    }
+
+    function renderProjects(list = DATA.projects){
+      const grid = $("#projectGrid");
+      grid.innerHTML = "";
+      list.forEach(p=>{
+        const el = document.createElement("article");
+        el.className = "card surface reveal";
+        el.innerHTML = `
+          <div class="chips" aria-hidden="true">
+            <span class="chip">${p.period}</span>
+          </div>
+          <h3>${p.title}</h3>
+          <p class="muted">${p.summary}</p>
+          ${p.highlights?.length ? `<ul class="bullet">${p.highlights.map(h=>`<li>${h}</li>`).join("")}</ul>` : ""}
+          <div class="badges">${p.tech.map(t=>`<span class="badge">${t}</span>`).join("")}</div>
+          <div style="margin-top:.7rem;display:flex;gap:.5rem;flex-wrap:wrap">
+            ${(p.links||[]).map(l=>`<a class="ghost" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join("")}
+          </div>
+        `;
+        grid.appendChild(el);
+      });
+      reveal();
+    }
+
+    function allTags(){
+      const s = new Set();
+      DATA.projects.forEach(p=>p.tech.forEach(t=>s.add(t)));
+      return Array.from(s).sort();
+    }
+
+    function renderTags(){
+      const bar = $("#tagBar"); bar.innerHTML = "";
+      // Reset
+      const reset = document.createElement("button");
+      reset.className = "chip"; reset.textContent = "All";
+      reset.onclick = ()=>{
+        $$("#tagBar .chip").forEach(c=>c.classList.remove("active"));
+        reset.classList.add("active"); renderProjects(DATA.projects);
+      };
+      bar.appendChild(reset);
+
+      allTags().forEach(tag=>{
+        const b = document.createElement("button");
+        b.className = "chip";
+        b.textContent = tag;
+        b.onclick = ()=>{
+          $$("#tagBar .chip").forEach(c=>c.classList.remove("active"));
+          b.classList.add("active");
+          renderProjects(DATA.projects.filter(p=>p.tech.includes(tag)));
+        };
+        bar.appendChild(b);
+      });
+      reset.classList.add("active");
+    }
+
+    function renderExperience(){
+      const wrap = $("#expTimeline"); wrap.innerHTML = "";
+      DATA.experience.forEach(x=>{
+        const it = document.createElement("article");
+        it.className = "timecard reveal";
+        it.innerHTML = `
+          <h3>${x.role} • ${x.org}</h3>
+          <small class="muted">${x.period} • ${x.where}</small>
+          <ul class="bullet">${x.bullets.map(b=>`<li>${b}</li>`).join("")}</ul>
+        `;
+        wrap.appendChild(it);
+      });
+      reveal();
+    }
+
+    function renderSkills(){
+      const wrap = $("#skillsWrap"); wrap.innerHTML = "";
+      Object.entries(DATA.skills).forEach(([group, items])=>{
+        const box = document.createElement("div");
+        box.className = "skill reveal";
+        box.innerHTML = `<h3>${group}</h3>`;
+        items.forEach(s=>{
+          const row = document.createElement("div");
+          row.style.margin = ".5rem 0";
+          row.innerHTML = `
+            <div style="display:flex;justify-content:space-between;gap:8px">
+              <strong>${s.name}</strong><small class="muted">${s.level}%</small>
+            </div>
+            <div class="bar"><span style="width:${s.level}%"></span></div>
+          `;
+          box.appendChild(row);
+        });
+        wrap.appendChild(box);
+      });
+      // animate bars
+      setTimeout(()=>$$(".bar > span").forEach(b=>b.style.width=b.style.width),0);
+      reveal();
+    }
+
+    function renderEducation(){
+      const wrap = $("#eduList"); wrap.innerHTML = "";
+      DATA.education.forEach(e=>{
+        const card = document.createElement("article");
+        card.className = "surface reveal";
+        card.style.padding = "1rem";
+        card.innerHTML = `
+          <h3>${e.school}</h3>
+          <p><strong>${e.degree}</strong><br/><small class="muted">${e.period} • ${e.location}</small></p>`;
+        wrap.appendChild(card);
+      });
+      reveal();
+    }
+
+    function renderAwards(){
+      $("#awardsList").innerHTML = DATA.awards.map(a=>`<li>${a}</li>`).join("");
+    }
+
+    function wireSearch(){
+      $("#projectSearch").addEventListener("input",(e)=>{
+        const q = e.target.value.toLowerCase();
+        const filtered = DATA.projects.filter(p =>
+          [p.title,p.summary,(p.highlights||[]).join(" "),p.tech.join(" ")].join(" ").toLowerCase().includes(q)
+        );
+        renderProjects(filtered);
+      });
+    }
+
+    function theme(){
+      const root = document.documentElement;
+      const key = "pref-theme";
+      const stored = localStorage.getItem(key);
+      if(stored){ root.setAttribute("data-theme", stored); }
+      $("#themeToggle").onclick = ()=>{
+        const next = root.getAttribute("data-theme")==="dark" ? "light":"dark";
+        root.setAttribute("data-theme", next);
+        localStorage.setItem(key,next);
+      };
+    }
+
+    // Reveal-on-scroll
+    function reveal(){
+      const obs = new IntersectionObserver((ents)=>{
+        ents.forEach(e=>{
+          if(e.isIntersecting){
+            e.target.style.opacity = 1;
+            e.target.style.transform = "translateY(0)";
+            obs.unobserve(e.target);
+          }
+        });
+      },{threshold:.12});
+      $$(".reveal").forEach(el=>obs.observe(el));
+    }
+
+    function init(){
+      initBasics();
+      renderProjects();
+      renderTags();
+      renderExperience();
+      renderSkills();
+      renderEducation();
+      renderAwards();
+      wireSearch();
+      theme();
+    }
+    document.addEventListener("DOMContentLoaded", init);
+  </script>
 </body>
 </html>
