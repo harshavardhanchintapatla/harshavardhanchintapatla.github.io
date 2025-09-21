@@ -148,9 +148,9 @@
       <div class="surface" style="padding:1.2rem">
         <h3 class="title" style="margin-bottom:.8rem">Impact at a glance</h3>
         <div class="stat-grid">
-          <div class="stat"><span class="num" id="metric-1"></span><small class="muted">Cloud-AI Testbed<br/>Latency / Accuracy</small></div>
-          <div class="stat"><span class="num" id="metric-2"></span><small class="muted">Automation Coverage</small></div>
-          <div class="stat"><span class="num" id="metric-3"></span><small class="muted">Tooling & Stack</small></div>
+          <div class="stat"><span class="num" id="metric-1"></span><small class="muted">Cloud/ICS Security<br/>Latency • Accuracy</small></div>
+          <div class="stat"><span class="num" id="metric-2"></span><small class="muted">Automation & CI/CD</small></div>
+          <div class="stat"><span class="num" id="metric-3"></span><small class="muted">Primary Stack</small></div>
         </div>
       </div>
     </div>
@@ -212,71 +212,127 @@
     const DATA = {
       basics: {
         name: "Harshavardhan Chintapatla",
-        tagline: "M.S. Computer Science @ University of Missouri • Building secure, data-driven systems across Cloud + AI/ML + QA automation.",
+        // Recruiter-style summary under your name:
+        tagline:
+          "Software Engineer & GRA with 4+ years across Capgemini (Aug 2021–Dec 2023) and University of Missouri (Jan 2025–Present). Industry: automated McDonald’s POS (750+ cases, 83% faster cycles, 98% payment coverage) and OrangeHRM CI automation. Research: reproducible speech-processing pipeline on HPC, 200TB+ data transfer automation, Zero-Trust TBAC for tactical edge, and protocol-aware SCADA/Smart Grid security with sub-100ms detection/mitigation; co-author (NOMS 2024, SmartGridComm 2025).",
         location: "Columbia, MO",
         email: "hcm6r@umsystem.edu",
         github: "https://github.com/harshavardhanchintapatla",
         resumeUrl: "Harsha_s_Resume.pdf"
       },
       metrics: {
-        latencyAccuracy: "≈40ms / 94%",
-        automation: "Multi-region CI/CD",
+        latencyAccuracy: "<100ms • up to 99.5%",
+        automation: "Multi-market • CI/CD",
         stack: "AWS • Java • Python • JS"
       },
+
+      // ---- Projects (Industry first, then GRA) ----
       projects: [
         {
-          title: "Cloud-AI Cyberattack Detection Testbed",
-          period: "2024–Present",
-          summary: "AI-driven testbed using AWS Lambda, SageMaker, and EC2 to detect & mitigate cyberattacks in near-real time.",
+          title: "McDonald’s POS Application – Test Automation",
+          period: "Aug 2021 – Dec 2023 (Capgemini)",
+          summary: "Automated POS workflows across 4 markets with a reusable framework and market configs; integrated Jenkins CI/CD.",
           highlights: [
-            "Latency ≈40ms, Accuracy 94%",
-            "Role-based portal, secure data retrieval, schedulers",
-            "Upgraded legacy static site into dynamic app"
+            "750+ test cases, 83% faster test cycles",
+            "98% coverage on critical payment flows (SIT/UAT)"
           ],
-          tech: ["AWS","Lambda","SageMaker","EC2","API Gateway","RDS","S3","IAM","Python","JavaScript"],
-          links: []
-        },
-        {
-          title: "Twitter Data Analysis with PySpark",
-          period: "2024",
-          summary: "Explored engagement drivers, media types, geo features, and mention–hashtag networks with PySpark SQL.",
-          highlights: ["PySpark SQL pipelines","Matplotlib & Plotly visualizations"],
-          tech: ["PySpark","Python","SQL","Matplotlib","Plotly"],
-          links: []
+          tech: ["Java","Jenkins","Postman","SIT/UAT","Automation"]
         },
         {
           title: "OrangeHRM – QA Automation & CI",
-          period: "2023",
-          summary: "Manual + automated testing with POM; CI via Jenkins for fast feedback across multiple modules.",
-          highlights: ["Java + Selenium (POM)","Jira test mgmt","Jenkins CI"],
+          period: "2023 (Capgemini)",
+          summary: "E2E automation using Java + Selenium (POM) with Jenkins; test mgmt via Jira.",
+          highlights: ["Stabilized flaky tests","Faster feedback via CI pipelines"],
           tech: ["Java","Selenium","Jenkins","Jira","CI/CD"],
           links: [{label:"Demo",url:"https://opensource-demo.orangehrmlive.com/"}]
+        },
+
+        {
+          title: "RISE – Endoscopy Lab Speech Recognition Pipeline",
+          period: "Jan 2025 – Present (University of Missouri)",
+          summary: "Containerized pipeline in Apptainer integrating Kaldi, Conda, FFmpeg; automatic file classification and gender-based model routing for speech/chew/swallow data in HPC environments.",
+          highlights: [
+            "Reproducible deployments across HPC nodes",
+            "Reduced manual preprocessing; structured outputs for MATLAB"
+          ],
+          tech: ["Apptainer","Kaldi","Python","FFmpeg","HPC"]
+        },
+        {
+          title: "RISE – EMCORE Data Transfer Automation",
+          period: "Jan 2025 – Present (University of Missouri)",
+          summary: "Secure Node.js web portal with RClone to archive 200TB+ SEM images from VAST to CEPH; selectable paths, PID/log tracking, and admin monitoring.",
+          highlights: [
+            "Eliminated manual CLI transfers",
+            "Improved VAST utilization & auditability"
+          ],
+          tech: ["Node.js","RClone","Linux","CEPH","Web Portal"]
+        },
+        {
+          title: "Arculus Zero Trust (Grant, with Booz Allen Hamilton)",
+          period: "Jan 2025 – Present (University of Missouri)",
+          summary: "Task-Based Access Control (TBAC) with User/Device/Task privilege assignments, mission dashboards with drone risk overlays, and adaptive token→certificate auth during high-risk states.",
+          highlights: [
+            "Just-in-time privileges based on risk",
+            "Improved operator decision-making"
+          ],
+          tech: ["Zero Trust","TBAC","Node.js","Dashboards","Security"]
+        },
+        {
+          title: "Master’s Thesis – DNP3 LLM-Powered Attack Detection & Mitigation",
+          period: "Jan 2025 – Present (University of Missouri)",
+          summary: "SCADA testbed (12 outstations, Mininet+ONOS). Tshark parses DNP3 fields; anomaly detector flags rare function codes (13, 14, 18, 21). LLM generates OpenFlow policies for auto-mitigation (isolation/reroute).",
+          highlights: [
+            "Protocol-aware detections with high precision",
+            "End-to-end mitigation in <100ms"
+          ],
+          tech: ["Mininet","ONOS","OpenFlow","LLM","Tshark","DNP3"]
+        },
+        {
+          title: "SmartGridComm 2025 – GridCAD (Co-Author)",
+          period: "2025 (University of Missouri)",
+          summary: "Distributed SDN security with ONOS controllers (Raft) and SageMaker MLP on 84 DNP3 features.",
+          highlights: [
+            "99.5% attack detection across 10 DNP3 types",
+            "Sub-100ms policy enforcement across geo-distributed controllers"
+          ],
+          tech: ["ONOS","Raft","AWS SageMaker","MLP","SDN"]
+        },
+        {
+          title: "NOMS 2024 – CIBR-Fort (Co-Author)",
+          period: "2024",
+          summary: "Knowledge-driven cybersecurity for renewable grids: threat modeling (attack-fault trees, timed automata), ontology+MITRE fusion, ANN anomaly detector with serverless mitigation.",
+          highlights: [
+            "91.9% detection accuracy",
+            "Mitigation trigger ~40ms via AWS Lambda"
+          ],
+          tech: ["Ontology","ANN","AWS Lambda","IBR Security"]
         }
       ],
+
       experience: [
         {
           role: "Graduate Research Assistant",
           org: "University of Missouri",
           where: "Columbia, MO",
-          period: "Feb 2024 – Present",
+          period: "Jan 2025 – Present",
           bullets: [
-            "Built AWS-based AI testbed (Lambda, SageMaker, EC2) achieving ≈40ms latency & 94% accuracy.",
-            "Developed secure research portal with RBAC and automated data pipelines.",
-            "Transformed static site to dynamic app for faster rendering & interactive data."
+            "Built reproducible pipelines on HPC (Apptainer/Kaldi) and large-scale data automation (RClone web portal).",
+            "Designed Zero-Trust TBAC with risk-adaptive authentication and mission dashboards.",
+            "Developed SCADA/SDN security testbeds with protocol-aware detection and <100ms mitigation."
           ]
         },
         {
-          role: "Associate Consultant",
+          role: "Associate Consultant (Software Engineer)",
           org: "Capgemini Technology Services",
           where: "Hyderabad, India",
           period: "Aug 2021 – Dec 2023",
           bullets: [
-            "Automated backend/UI tests using Postman, Opentest, and Cypress; covered functional/integration/regression.",
-            "Scaled multi-market scripts across regions to increase coverage & stability.",
-            "Improved pipeline reliability by fixing flaky tests and optimizing stages."
+            "Automated POS across 4 markets (750+ cases) with Jenkins CI/CD; 83% faster cycles, 98% payment coverage.",
+            "Implemented OrangeHRM E2E automation (Java+Selenium POM), stabilized flaky tests, integrated Jira."
           ]
         }
       ],
+
       skills: {
         "Languages": [
           {name:"Java",level:90},{name:"Python",level:85},{name:"JavaScript",level:80},{name:"HTML/CSS",level:85},{name:"SQL",level:80}
@@ -293,13 +349,15 @@
           {name:"VS Code / Eclipse / Visual Studio",level:80}
         ]
       },
+
       education: [
         {school:"University of Missouri", degree:"M.S. in Computer Science", period:"Jan 2024 – Present", location:"Columbia, Missouri"},
         {school:"Bharath Institute of Higher Education and Research", degree:"B.Tech in Electronics & Communication Engineering", period:"Jul 2017 – Jun 2021", location:"Chennai, India"}
       ],
+
       awards: [
         "Xtramile Award – Outstanding performance (Dec 2022)",
-        "IEVOLVE certificate – Kaizen idea productivity improvement (Postman)"
+        "IEVOLVE certificate – Kaizen productivity improvement (Postman)"
       ]
     };
 
@@ -335,7 +393,7 @@
           <h3>${p.title}</h3>
           <p class="muted">${p.summary}</p>
           ${p.highlights?.length ? `<ul class="bullet">${p.highlights.map(h=>`<li>${h}</li>`).join("")}</ul>` : ""}
-          <div class="badges">${p.tech.map(t=>`<span class="badge">${t}</span>`).join("")}</div>
+          <div class="badges">${(p.tech||[]).map(t=>`<span class="badge">${t}</span>`).join("")}</div>
           <div style="margin-top:.7rem;display:flex;gap:.5rem;flex-wrap:wrap">
             ${(p.links||[]).map(l=>`<a class="ghost" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`).join("")}
           </div>
@@ -343,11 +401,12 @@
         grid.appendChild(el);
       });
       reveal();
+      renderTags(); // ensure tag bar reflects current list
     }
 
     function allTags(){
       const s = new Set();
-      DATA.projects.forEach(p=>p.tech.forEach(t=>s.add(t)));
+      DATA.projects.forEach(p=>(p.tech||[]).forEach(t=>s.add(t)));
       return Array.from(s).sort();
     }
 
@@ -369,7 +428,8 @@
         b.onclick = ()=>{
           $$("#tagBar .chip").forEach(c=>c.classList.remove("active"));
           b.classList.add("active");
-          renderProjects(DATA.projects.filter(p=>p.tech.includes(tag)));
+          const filtered = DATA.projects.filter(p=>(p.tech||[]).includes(tag));
+          renderProjects(filtered);
         };
         bar.appendChild(b);
       });
@@ -410,7 +470,6 @@
         });
         wrap.appendChild(box);
       });
-      // animate bars
       setTimeout(()=>$$(".bar > span").forEach(b=>b.style.width=b.style.width),0);
       reveal();
     }
@@ -437,7 +496,7 @@
       $("#projectSearch").addEventListener("input",(e)=>{
         const q = e.target.value.toLowerCase();
         const filtered = DATA.projects.filter(p =>
-          [p.title,p.summary,(p.highlights||[]).join(" "),p.tech.join(" ")].join(" ").toLowerCase().includes(q)
+          [p.title,p.summary,(p.highlights||[]).join(" "), (p.tech||[]).join(" ")].join(" ").toLowerCase().includes(q)
         );
         renderProjects(filtered);
       });
@@ -472,7 +531,6 @@
     function init(){
       initBasics();
       renderProjects();
-      renderTags();
       renderExperience();
       renderSkills();
       renderEducation();
