@@ -1,0 +1,171 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #f8fafc;
+    --color-card: #ffffff;
+    --color-border: #e2e8f0;
+    --color-text: #0f172a;
+    --color-muted: #64748b;
+  }
+
+  .dark {
+    --color-bg: #0a0f1e;
+    --color-surface: #0d1424;
+    --color-card: #111827;
+    --color-border: #1f2937;
+    --color-text: #f1f5f9;
+    --color-muted: #94a3b8;
+  }
+
+  * {
+    scroll-behavior: smooth;
+  }
+
+  html {
+    @apply antialiased;
+  }
+
+  body {
+    @apply bg-white text-slate-900 dark:bg-dark-bg dark:text-slate-100 font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  ::selection {
+    @apply bg-primary-500/30 text-primary-900 dark:text-primary-100;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 lg:py-28;
+  }
+
+  .card {
+    @apply bg-white dark:bg-dark-card border border-slate-200 dark:border-dark-border rounded-2xl;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-300 hover:border-primary-500/50 hover:shadow-lg hover:shadow-primary-500/10 dark:hover:shadow-primary-500/10;
+  }
+
+  .badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-500/10 text-primary-600 dark:text-primary-400 border border-primary-500/20;
+  }
+
+  .badge-accent {
+    @apply badge bg-accent-500/10 text-accent-600 dark:text-accent-400 border border-accent-500/20;
+  }
+
+  .badge-green {
+    @apply badge bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20;
+  }
+
+  .badge-orange {
+    @apply badge bg-orange-500/10 text-orange-600 dark:text-orange-400 border border-orange-500/20;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-dark-bg;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 border border-slate-300 dark:border-dark-border hover:border-primary-500 text-slate-700 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 font-semibold rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-dark-bg;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent;
+  }
+
+  .section-title {
+    @apply text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white;
+  }
+
+  .section-subtitle {
+    @apply text-lg text-slate-600 dark:text-slate-400 mt-4 max-w-2xl;
+  }
+
+  .code-block {
+    @apply font-mono text-sm bg-dark-bg dark:bg-black/40 text-emerald-400 px-4 py-3 rounded-lg border border-dark-border overflow-x-auto;
+  }
+
+  .timeline-dot {
+    @apply w-3 h-3 rounded-full bg-primary-500 border-2 border-primary-300 dark:border-primary-700 flex-shrink-0 mt-2;
+  }
+
+  .nav-link {
+    @apply text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-200;
+  }
+
+  .nav-link-active {
+    @apply text-sm font-medium text-primary-600 dark:text-primary-400;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .glass {
+    @apply backdrop-blur-md bg-white/80 dark:bg-dark-surface/80;
+  }
+
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+  }
+
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.15);
+  }
+}
+
+/* Custom scrollbar for dark mode */
+.dark ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: #0d1424;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 3px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: #4b5563;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

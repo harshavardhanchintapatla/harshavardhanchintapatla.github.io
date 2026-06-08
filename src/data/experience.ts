@@ -1,0 +1,48 @@
+import { Experience } from '../types'
+
+export const experiences: Experience[] = [
+  {
+    id: 'mizzou-gra',
+    company: 'University of Missouri',
+    role: 'Graduate Research Assistant — Software Engineering',
+    period: 'January 2024 – May 2026',
+    location: 'Columbia, Missouri',
+    type: 'Research & Engineering',
+    description: 'Designed and built production-style software systems as part of the MizzouCloudDevOps and RISE/PAALAB research programs. Responsibilities spanned full-stack Java development, AWS infrastructure, AI/RAG pipeline engineering, and system architecture.',
+    highlights: [
+      'Designed two-tier Spring Boot architecture with GitHub OAuth2, custom TokenAuthFilter session security, and @PreAuthorize RBAC for the MizzouCloudDevOps Learning Portal',
+      'Implemented server-side grading with score values stripped from frontend responses to prevent client-side tampering',
+      'Built GPT-4 RAG instructor assistant with ChromaDB vector retrieval and a controlled tool registry exposing only read-only MySQL analytics views',
+      'Generated PDFBox certificates on assignment completion and stored them in AWS S3 with presigned URL delivery',
+      'Provisioned AWS EC2 lab environments and managed asset storage via Amazon S3',
+      'Designed and built local RAG chatbot for RISE and PAALAB research groups using LLaMA 3.1 via Ollama, Qdrant vector search with payload filtering, and SSE token streaming',
+      'Built async Qdrant indexing pipeline with nomic-embed-text embeddings triggered after research job completion',
+      'Configured Jenkins CI/CD pipelines for automated build, test, and deployment workflows',
+      'Resolved N+1 query problem in JPA bidirectional relationships using HashSet optimization',
+      'Created read-only MySQL analytics views for safe LLM tool access',
+    ],
+    techStack: ['Java 8', 'Spring Boot', 'Spring Security', 'Hibernate/JPA', 'AngularJS', 'Thymeleaf', 'MySQL', 'AWS EC2', 'AWS S3', 'GPT-4 API', 'ChromaDB', 'Apache PDFBox', 'Node.js', 'React 18', 'LLaMA 3.1', 'Qdrant', 'MongoDB', 'Jenkins'],
+    sdlcPhases: ['Requirement Analysis', 'System Design', 'Development', 'Testing', 'CI/CD', 'Deployment', 'Monitoring'],
+  },
+  {
+    id: 'capgemini',
+    company: 'Capgemini Technology Services',
+    role: 'Associate Consultant — QA Automation Engineer',
+    period: 'August 2021 – December 2023',
+    location: 'India (Remote Support for Global Client)',
+    type: 'Enterprise Consulting',
+    description: 'Part of the QA team supporting McDonald\'s NPOS (Next Generation POS) system modernization program. Responsible for test automation, API validation, defect management, SIT/UAT support, and release readiness across multiple Agile sprint cycles.',
+    highlights: [
+      'Designed Cypress TypeScript automation framework for McDonald\'s NPOS covering order placement, payment completion, receipt generation, and tax calculation workflows',
+      'Built Postman collections for REST API validation and executed them via Newman in Jenkins CI pipelines',
+      'Managed end-to-end defect lifecycle in Jira: logging, triaging, retesting, and closure tracking',
+      'Supported SIT (System Integration Testing) and UAT (User Acceptance Testing) cycles',
+      'Contributed to release readiness assessments and go/no-go decision support',
+      'Authored manual test cases with requirement traceability for business-critical POS workflows',
+      'Implemented Page Object Model pattern in Cypress for maintainable UI automation',
+      'Reported test execution results to project stakeholders with defect density and coverage metrics',
+    ],
+    techStack: ['Cypress', 'TypeScript', 'Postman', 'Newman', 'Jenkins', 'GitHub', 'Jira'],
+    sdlcPhases: ['Requirement Analysis', 'Test Planning', 'Test Case Design', 'Test Execution', 'Defect Management', 'SIT', 'UAT', 'Release Readiness', 'Go/No-Go Sign-off'],
+  },
+]
