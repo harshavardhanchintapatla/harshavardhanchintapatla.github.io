@@ -59,8 +59,7 @@ export const skills: Skill[] = [
     icon: '🗄️',
     items: [
       { name: 'MySQL', level: 'proficient' },
-      { name: 'MongoDB', level: 'proficient' },
-      { name: 'Qdrant (Vector DB)', level: 'proficient' },
+      { name: 'MongoDB / Mongoose', level: 'proficient' },
       { name: 'ChromaDB (Vector DB)', level: 'proficient' },
     ],
   },
@@ -69,11 +68,9 @@ export const skills: Skill[] = [
     icon: '🤖',
     items: [
       { name: 'GPT-4 API', level: 'proficient' },
-      { name: 'LLaMA 3.1 via Ollama', level: 'proficient' },
       { name: 'RAG Pipeline Design', level: 'proficient' },
       { name: 'Vector Embeddings', level: 'proficient' },
       { name: 'LLM Tool Calling', level: 'proficient' },
-      { name: 'nomic-embed-text', level: 'proficient' },
     ],
   },
   {
@@ -94,9 +91,10 @@ export const skills: Skill[] = [
     category: 'Data & ETL',
     icon: '📊',
     items: [
-      { name: 'ETL Pipelines', level: 'familiar' },
+      { name: 'ETL Pipelines', level: 'proficient' },
       { name: 'Apache PDFBox', level: 'proficient' },
-      { name: 'RClone / CEPH Storage', level: 'familiar' },
+      { name: 'rclone / Ceph/S3-compatible Storage', level: 'proficient' },
+      { name: 'SLURM / HPC Job Orchestration', level: 'proficient' },
       { name: 'Pandas', level: 'familiar' },
     ],
   },
@@ -106,21 +104,21 @@ export const systemDesignCards: SystemDesignCard[] = [
   {
     title: 'Two-Tier Spring Boot Architecture',
     description: 'Web Tier handles SSR + session, API Tier exposes secured REST endpoints with TokenAuthFilter. Clean separation of rendering from data access.',
-    project: 'MizzouCloudDevOps',
+    project: 'DevOps Learning Portal',
     tags: ['Spring Boot', 'REST API', 'Security'],
     icon: '🏗️',
   },
   {
     title: 'Token-Based API Security',
     description: 'GitHub OAuth2 callback generates custom session tokens. TokenAuthFilter validates X-Auth-Token on every API request. Token revocation simpler than JWT.',
-    project: 'MizzouCloudDevOps',
+    project: 'DevOps Learning Portal',
     tags: ['Spring Security', 'OAuth2', 'Tokens'],
     icon: '🔐',
   },
   {
-    title: 'RAG with Controlled Tool Registry',
-    description: 'GPT-4 assistant restricted to read-only MySQL analytics views via a controlled tool registry. LLM cannot access live student data or trigger writes.',
-    project: 'MizzouCloudDevOps',
+    title: 'RAG with Restricted Tool Registry',
+    description: 'GPT-4 assistant restricted to read-only MySQL analytics views via a restricted tool registry. LLM cannot access live student data or trigger writes.',
+    project: 'DevOps Learning Portal',
     tags: ['RAG', 'GPT-4', 'Tool Calling'],
     icon: '🎛️',
   },
@@ -139,11 +137,11 @@ export const systemDesignCards: SystemDesignCard[] = [
     icon: '⚡',
   },
   {
-    title: 'Vector DB Payload Filtering',
-    description: 'Single Qdrant index serves two research groups via payload metadata filtering. No separate indices needed — group isolation enforced at query time.',
-    project: 'RISE/PAALAB',
-    tags: ['Qdrant', 'RAG', 'Multi-tenant'],
-    icon: '🔍',
+    title: 'Presigned Ceph/S3 Upload Flow',
+    description: 'Large research datasets upload directly to Ceph/S3-compatible storage via presigned URLs generated through AWS SDK-style S3 client calls — the backend never proxies the file bytes.',
+    project: 'RISE Platform',
+    tags: ['S3', 'Presigned URLs', 'Ceph'],
+    icon: '📦',
   },
   {
     title: 'Jenkins CI/CD Release Gates',
@@ -168,8 +166,8 @@ export const systemDesignCards: SystemDesignCard[] = [
   },
   {
     title: 'N+1 Query Optimization',
-    description: 'Detected N+1 query pattern in JPA bidirectional student-enrollment mapping. Resolved by using HashSet in entity relationship, reducing DB round trips from O(n) to O(1).',
-    project: 'MizzouCloudDevOps',
+    description: 'Detected N+1 query pattern in JPA bidirectional student-enrollment mapping. Resolved with a bulk fetch query plus an in-memory HashSet lookup, reducing DB round trips from O(n) to O(1).',
+    project: 'DevOps Learning Portal',
     tags: ['JPA', 'Hibernate', 'Performance'],
     icon: '📈',
   },
@@ -199,14 +197,14 @@ export const stlcPhases = [
 
 export const projectSDLCMapping = [
   {
-    project: 'MizzouCloudDevOps',
+    project: 'DevOps Learning Portal',
     color: 'blue',
     phases: ['SDLC', 'Backend Design', 'API Security', 'RAG Pipeline', 'AWS Deployment', 'CI/CD'],
   },
   {
-    project: 'RISE/PAALAB',
+    project: 'RISE Platform',
     color: 'purple',
-    phases: ['AI/RAG', 'Privacy Design', 'Live Context Retrieval', 'Streaming UI'],
+    phases: ['SDLC', 'Storage & ETL Design', 'Role-Based Access', 'HPC Job Orchestration'],
   },
   {
     project: 'RPM Platform',

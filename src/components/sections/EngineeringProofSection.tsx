@@ -15,13 +15,19 @@ const proofs = [
     icon: '🔐',
     title: 'Secure API Design',
     body: 'GitHub OAuth2, custom session tokens, TokenAuthFilter middleware, @PreAuthorize RBAC, score stripping, and read-only LLM tool registries — security was designed in, not added on.',
-    badge: 'MizzouCloudDevOps',
+    badge: 'DevOps Learning Portal',
   },
   {
     icon: '🤖',
-    title: 'Responsible RAG Systems',
-    body: 'Two production-style RAG systems: one with GPT-4 and a controlled tool registry, one fully local with LLaMA 3.1 and Qdrant payload filtering for group isolation — no hallucinations, no data leakage.',
-    badge: 'RISE + MizzouCloud',
+    title: 'Responsible RAG System',
+    body: 'A GPT-4 instructor assistant restricted to a controlled tool registry and read-only MySQL analytics views — retrieval-augmented from ChromaDB-indexed course content, not raw open-ended LLM calls.',
+    badge: 'DevOps Learning Portal',
+  },
+  {
+    icon: '🌾',
+    title: 'Real Deployed Research Platform',
+    body: 'RISE is a live University of Missouri platform, not a demo. Built Ceph/S3-backed dataset storage, rclone ETL scheduling, and SSH-based SLURM job orchestration for precision agriculture research workflows.',
+    badge: 'RISE Platform',
   },
   {
     icon: '☁️',

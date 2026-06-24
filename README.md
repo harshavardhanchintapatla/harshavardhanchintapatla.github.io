@@ -25,8 +25,8 @@ Personal software engineering portfolio for [Harshavardhan Chintapatla](https://
 
 | Project | Categories |
 |---|---|
-| MizzouCloudDevOps Learning Portal | Full Stack · Backend · AWS · AI/RAG |
-| RISE/PAALAB Research Chatbot | AI/RAG · Backend |
+| DevOps Learning Portal | Full Stack · Backend · AWS · AI/RAG |
+| RISE Research Workflow and ETL Platform | Full Stack · Backend · System Design |
 | Remote Patient Health Monitoring | AWS · Backend · System Design |
 | McDonald's NPOS Release Automation | SDET · QA Automation |
 | OrangeHRM Java Automation Framework | SDET · QA Automation |

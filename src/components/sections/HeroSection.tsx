@@ -111,7 +111,7 @@ export default function HeroSection() {
               { value: '5+', label: 'Years Experience' },
               { value: '5', label: 'Deep Projects' },
               { value: '10+', label: 'AWS Services' },
-              { value: '2', label: 'RAG Systems Built' },
+              { value: '1', label: 'RAG System Built' },
             ].map(stat => (
               <div key={stat.label} className="card p-4 text-center">
                 <p className="text-2xl font-bold gradient-text">{stat.value}</p>

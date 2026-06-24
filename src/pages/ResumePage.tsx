@@ -50,10 +50,12 @@ export default function ResumePage() {
             </h2>
             <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
               Software Engineer with 5 years of experience across Java full-stack development, AWS-backed cloud systems,
-              REST API design, AI/RAG pipeline engineering, test automation, and CI/CD. Designed two-tier Spring Boot
-              systems with OAuth2 and token-based security, built local and cloud RAG chatbots, architected serverless
-              AWS processing pipelines, and delivered Cypress/Selenium automation frameworks supporting enterprise release
-              decisions. Currently completing MS in Computer Science at the University of Missouri.
+              REST API design, research workflow/ETL engineering, AI/RAG instructor tooling, test automation, and CI/CD.
+              Designed two-tier Spring Boot systems with OAuth2 and token-based security, built and supported a real
+              deployed React/Node.js/MongoDB research workflow and ETL platform with Ceph/S3 storage and SLURM/HPC job
+              orchestration, architected serverless AWS health-data pipelines aligned with HL7 FHIR R4, and delivered
+              Cypress/Selenium automation frameworks supporting enterprise release decisions. Currently completing MS
+              in Computer Science at the University of Missouri.
             </p>
           </section>
 

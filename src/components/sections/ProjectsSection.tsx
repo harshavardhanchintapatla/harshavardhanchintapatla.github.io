@@ -26,10 +26,10 @@ const roles: Array<{ label: string; value: TargetRole }> = [
 
 const roleProjectMap: Record<TargetRole, string[]> = {
   all: [],
-  'java-fullstack': ['mizzou-cloud-devops'],
-  backend: ['mizzou-cloud-devops', 'rpm-health-monitoring', 'rise-rag-chatbot'],
+  'java-fullstack': ['mizzou-cloud-devops', 'rise-rag-chatbot'],
+  backend: ['mizzou-cloud-devops', 'rise-rag-chatbot', 'rpm-health-monitoring'],
   aws: ['rpm-health-monitoring', 'mizzou-cloud-devops'],
-  'ai-rag': ['rise-rag-chatbot', 'mizzou-cloud-devops'],
+  'ai-rag': ['mizzou-cloud-devops'],
   sdet: ['mcdonalds-npos', 'orangehrm-automation'],
   'software-engineer': ['mizzou-cloud-devops', 'rise-rag-chatbot', 'rpm-health-monitoring', 'mcdonalds-npos', 'orangehrm-automation'],
 }
@@ -61,7 +61,7 @@ export default function ProjectsSection({ viewMode }: Props) {
           <p className="text-primary-600 dark:text-primary-400 font-mono text-sm font-medium mb-3">$ ls ./projects</p>
           <h2 className="section-title">Featured Projects</h2>
           <p className="section-subtitle">
-            Five deep case studies. Each one documents the problem, architecture, key decisions, tradeoffs, and what it proves.
+            Five deep case studies covering full-stack engineering, backend systems, AWS workflows, healthcare interoperability, ETL automation, QA automation, and system design.
           </p>
         </div>
 

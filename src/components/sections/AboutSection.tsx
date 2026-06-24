@@ -16,9 +16,11 @@ export default function AboutSection() {
                 AWS-backed cloud systems, AI/RAG pipelines, REST API design, and enterprise test automation.
               </p>
               <p>
-                At Mizzou, I've built production-style systems: a two-tier Spring Boot learning portal with
-                OAuth2 security and a GPT-4 RAG assistant, and a fully local RAG chatbot for university research
-                groups using LLaMA 3.1 and Qdrant — with zero data leaving institutional infrastructure.
+                At Mizzou, I've built and supported production-style systems: a two-tier Spring Boot learning
+                portal with OAuth2 security and a GPT-4 RAG instructor assistant, and a real deployed React/Node.js/
+                MongoDB research workflow and ETL platform for university research groups — handling dataset
+                storage, rclone-based ETL transfers, and SLURM/HPC job orchestration for precision agriculture
+                workflows.
               </p>
               <p>
                 At Capgemini, I contributed to McDonald's POS modernization as a QA automation engineer,
@@ -50,7 +52,7 @@ export default function AboutSection() {
               {
                 icon: '🤖',
                 title: 'AI/RAG Engineering',
-                body: 'Built RAG pipelines with GPT-4, LLaMA 3.1, ChromaDB, and Qdrant — grounded in real data, not hallucinated responses.',
+                body: 'Built a GPT-4 RAG instructor assistant backed by ChromaDB with a restricted tool registry — grounded in real course content, not hallucinated responses.',
                 color: 'border-accent-500/30',
               },
               {
